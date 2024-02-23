@@ -22,15 +22,15 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-           // 목록항목의 p와 a를 둘러싸시오
-           $("#product ul.list li").each(function(){// each()는 앞요소갯수만큼 순차적으로 실행하시오; 
-                $(this).children("p,a").wrapAll("<div class='wtext'></div>"); 
+            function doc(){
+            // 목록항목의 p와 a를 둘러싸시오
+                $("#product ul.list li").each(function(){// each()는 앞요소갯수만큼 순차적으로                          $(this).children("p,a").wrapAll("<div class='wtext'></div>"); 
                 // wrapAll('<태그></태그');앞요소를 둘러싸시오(괄호안의 태그로)
                 $(".wtext").hide();
             });           
-            // 프로덕트 제품오버시 설명글 표시
+             // 프로덕트 제품오버시 설명글 표시
                 //목록항목에 마우스올리면 실행하시오
-           $("#product ul.list li").hover(
+                $("#product ul.list li").hover(
                 function(){ //mouseenter
                     // 마우스올린 li의 자식인 wtext를 fadeIn();하시오
                     $(this).children(".wtext").stop().fadeIn();//fadeIn() 서서히 나타나게 하시오
@@ -47,8 +47,9 @@
                     $(this).children(".wtext").removeClass("scaleX100");
                 }
            ); 
-           /* 반응형에 따른 요소제어(보이기) */
-           if($(window).width()<=1200){ // <= 작거나 같다(비교연산자) / $(window).width() 윈도우의 크기값을 가져와라
+
+            /* 반응형에 따른 요소제어(보이기) */
+                if($(window).width()<=1200){ // <= 작거나 같다(비교연산자) / $(window).width()              와라
                 // 모바일시 brand제목을 헤더로 옮기기
                 $("aside .wrap h2").appendTo("header .wrap nav"); 
                 /* 타이틀이미지 모바일용으로 교체 */
@@ -83,7 +84,6 @@
 
                 var i=1;
                 var m=1;
-
                 $("aside .wrap ul.list > li").each(function(){
                     
                     $("aside .wrap ul.list > li:nth-child("+i+") ul.listsub li").each(function(){
@@ -96,8 +96,8 @@
                 
 
             }
-           //윈도우창사이즈가 바뀌면 실행하시오
-           $(window).resize(function(){
+            //윈도우창사이즈가 바뀌면 실행하시오
+                $(window).resize(function(){
                 if($(window).width()<=1200){
                     $("aside .wrap h2").appendTo("header .wrap nav"); 
                  /* 타이틀이미지 모바일용으로 교체 */
@@ -141,7 +141,7 @@
 
                 }
            });
-           /*
+            /*
             / 다른 요소를 잘라내서 원하는 요소안에 넣기
                 잘라내올 요소.appendTo("붙여넣을 요소");
 
@@ -155,10 +155,10 @@
                     $("aside .wrap h2").appendTo("header .wrap nav");  //  h2를 ..로 옮겨라
                 }
            */
-          
-        /* 햄버거버튼 클릭 - 대메뉴 보이기 */
-            // 햄버거를 클릭하면 실행하시오()
-            $(".ham").click(function(){
+
+             /* 햄버거버튼 클릭 - 대메뉴 보이기 */
+             // 햄버거를 클릭하면 실행하시오()
+                $(".ham").click(function(){
                 //w대메뉴에 클래스를 붙이시오
                 $("header .wrap nav .wgnb").addClass("wgnbShow");
 
@@ -178,19 +178,18 @@
                 $("aside").removeClass("asideSliding");
                 return false;
             });
-        
-        //모바일 대메뉴클릭하면 서브메뉴 펼치게
-            $("header .wrap nav .wgnb h2").click(function(){
+
+             //모바일 대메뉴클릭하면 서브메뉴 펼치게
+                $("header .wrap nav .wgnb h2").click(function(){
                 $(this).toggleClass("currenH2");
                 $(this).parent().siblings().children("h2").removeClass("currenH2");
                 $(this).next().slideToggle();
                 $(this).parent().siblings().children("ul.sub1").slideUp();
             });
-        
-            var headerH=$("header").height();
-        
-            // 스크롤이벤트    
-            $(window).scroll(function(){
+
+             var headerH=$("header").height();
+             // 스크롤이벤트    
+                $(window).scroll(function(){
                 // 헤더 애니
                 if($(window).scrollTop()>$("header").height()){ //윈도우의 scrollTop위치값이 ...보다 크다면
                     //body에 스타일을 지정하시오(padding-top값에 header높이값을 지정)
@@ -222,10 +221,10 @@
 
                
             });  
-        
-        // 대메뉴오버시 서브를 슬라이드 다운
-            var wsubN;
-            $("header .wrap nav ul.gnb li a").hover(
+
+             // 대메뉴오버시 서브를 슬라이드 다운
+             var wsubN;
+                $("header .wrap nav ul.gnb li a").hover(
                 function(){
                     $("header .wrap nav .wgnb").stop().slideDown();
                     //제이쿼리 slideDown()시 css속성에 transition이 있으면 제대로  펼쳐지지 않는다... 
@@ -235,26 +234,26 @@
                     $("header .wrap nav .wgnb .wsub:not(:nth-child("+wsubN+"))").fadeOut();
                 }
             );   
-              
-        // 서브wgnb영역을 벗어나면 실행하시오(wgnb가 슬라이드업)
-            $("header .wrap nav .wgnb").mouseleave(function(){
+
+             // 서브wgnb영역을 벗어나면 실행하시오(wgnb가 슬라이드업)
+                $("header .wrap nav .wgnb").mouseleave(function(){
                 $(this).slideUp();
             });
 
-        // h1요소에 마우스진입하면 (wgnb가 슬라이드업)
-        $("header .wrap nav h1").mouseenter(function(){
+             // h1요소에 마우스진입하면 (wgnb가 슬라이드업)
+                $("header .wrap nav h1").mouseenter(function(){
             $("header .wrap nav .wgnb").slideUp();
         });
-
-        // top버튼 클릭하면 실행하시오(문서를 애니메이트하시오)
-            $("footer .btop").click(function(){
+             // top버튼 클릭하면 실행하시오(문서를 애니메이트하시오)
+                $("footer .btop").click(function(){
                 $("html,body").animate({scrollTop:0},1000);//문서스크롤 애니
             });
-
+            }
         // 공통 html코드 불러오기 
         $("#top").load("header.html");  // 원하는 파일 경로를 삽입하면 된다
         $("footer").load("footer.html");
         });
+
     </script> 
     <!-- slick -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
