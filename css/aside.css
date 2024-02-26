@@ -74,7 +74,6 @@ aside .wrap ul.list > li:nth-child(1) h3::before{
  aside .wrap ul.list > li:nth-child(8) h3::before{
   background-color:  #727272;
 }
-
 aside .wrap ul.list > li h3 a {
   height: 100%;
   display: flex;
